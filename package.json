@@ -1,0 +1,22 @@
+{
+  "private": true,
+  "name": "chiky-monorepo",
+  "type": "module",
+  "scripts": {
+    "dev": "pnpm --filter docs dev",
+    "build": "pnpm --filter chiky build && pnpm --filter docs build",
+    "test": "pnpm -r test",
+    "check": "pnpm -r check",
+    "format": "prettier -l --write ."
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@tailwindcss/oxide",
+      "esbuild"
+    ]
+  },
+  "devDependencies": {
+    "prettier": "^3.6.2",
+    "prettier-plugin-svelte": "^3.4.0"
+  }
+}

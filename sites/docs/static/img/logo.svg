@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <!-- Ears (rounder, wider) -->
+  <path d="M22,40 Q10,15 8,8 Q15,10 35,28 Z" fill="#E8851E" stroke="#C66A10" stroke-width="1.5" stroke-linejoin="round"/>
+  <path d="M78,40 Q90,15 92,8 Q85,10 65,28 Z" fill="#E8851E" stroke="#C66A10" stroke-width="1.5" stroke-linejoin="round"/>
+  <!-- Inner ears -->
+  <path d="M24,37 Q15,18 14,13 Q19,15 33,29 Z" fill="#F4B8A0"/>
+  <path d="M76,37 Q85,18 86,13 Q81,15 67,29 Z" fill="#F4B8A0"/>
+  <!-- Head -->
+  <ellipse cx="50" cy="55" rx="38" ry="36" fill="#F09030"/>
+  <!-- Cheeks (rounder face) -->
+  <ellipse cx="28" cy="62" rx="12" ry="10" fill="#F09030"/>
+  <ellipse cx="72" cy="62" rx="12" ry="10" fill="#F09030"/>
+  <!-- Lighter face center -->
+  <ellipse cx="50" cy="63" rx="24" ry="22" fill="#F8B060"/>
+  <!-- Lighter cheek patches -->
+  <ellipse cx="32" cy="62" rx="8" ry="7" fill="#FBCC88" opacity="0.6"/>
+  <ellipse cx="68" cy="62" rx="8" ry="7" fill="#FBCC88" opacity="0.6"/>
+  <!-- Eyes -->
+  <ellipse cx="36" cy="49" rx="8" ry="8.5" fill="white"/>
+  <ellipse cx="64" cy="49" rx="8" ry="8.5" fill="white"/>
+  <!-- Iris -->
+  <ellipse cx="37.5" cy="49" rx="5" ry="5.5" fill="#4AAF57"/>
+  <ellipse cx="62.5" cy="49" rx="5" ry="5.5" fill="#4AAF57"/>
+  <!-- Pupil -->
+  <ellipse cx="38" cy="48.5" rx="2.5" ry="3.5" fill="#111"/>
+  <ellipse cx="63" cy="48.5" rx="2.5" ry="3.5" fill="#111"/>
+  <!-- Eye shine -->
+  <circle cx="40" cy="46.5" r="1.8" fill="white"/>
+  <circle cx="65" cy="46.5" r="1.8" fill="white"/>
+  <circle cx="36" cy="51" r="0.9" fill="white" opacity="0.7"/>
+  <circle cx="61" cy="51" r="0.9" fill="white" opacity="0.7"/>
+  <!-- Nose -->
+  <path d="M47,59 Q50,55.5 53,59 Q50,61.5 47,59 Z" fill="#E86B6B"/>
+  <!-- Mouth -->
+  <path d="M50,61 Q45,66 42,64" fill="none" stroke="#C66A10" stroke-width="1.3" stroke-linecap="round"/>
+  <path d="M50,61 Q55,66 58,64" fill="none" stroke="#C66A10" stroke-width="1.3" stroke-linecap="round"/>
+  <!-- Whiskers -->
+  <path d="M8,54 Q20,56 28,58" fill="none" stroke="#C66A10" stroke-width="1" stroke-linecap="round"/>
+  <path d="M6,61 Q18,60 28,61" fill="none" stroke="#C66A10" stroke-width="1" stroke-linecap="round"/>
+  <path d="M8,68 Q20,65 28,64" fill="none" stroke="#C66A10" stroke-width="1" stroke-linecap="round"/>
+  <path d="M92,54 Q80,56 72,58" fill="none" stroke="#C66A10" stroke-width="1" stroke-linecap="round"/>
+  <path d="M94,61 Q82,60 72,61" fill="none" stroke="#C66A10" stroke-width="1" stroke-linecap="round"/>
+  <path d="M92,68 Q80,65 72,64" fill="none" stroke="#C66A10" stroke-width="1" stroke-linecap="round"/>
+  <!-- Forehead stripes (tabby M marking) -->
+  <path d="M38,36 Q44,30 50,35 Q56,30 62,36" fill="none" stroke="#C66A10" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M41,39 Q46,34 50,38 Q54,34 59,39" fill="none" stroke="#C66A10" stroke-width="1.2" stroke-linecap="round"/>
+</svg>
