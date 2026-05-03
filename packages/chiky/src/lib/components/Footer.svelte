@@ -1,9 +1,9 @@
 <script lang="ts">
-	import { siteName, footerNavItems, isGroup, defaultLang } from '$lib/config';
+	import { siteCopyright, footerNavItems, isGroup, defaultLang } from '$lib/config';
 	import NavLink from './NavLink.svelte';
 	import SiteLogo from './SiteLogo.svelte';
 
-	const NAME = siteName();
+	const COPYRIGHT = siteCopyright();
 	const YEAR = new Date().getFullYear();
 
 	let { lang = defaultLang() } = $props();
@@ -14,7 +14,7 @@
 <footer class="footer">
 	<aside class="self-center text-center sm:text-left">
 		<SiteLogo />
-		<p class="mt-4 text-sm opacity-60">&copy; {YEAR} {NAME}. All rights reserved.</p>
+		<p class="mt-4 text-sm opacity-60">&copy; {YEAR} {COPYRIGHT}. All rights reserved.</p>
 	</aside>
 	{#each navItems as item}
 		{#if isGroup(item)}

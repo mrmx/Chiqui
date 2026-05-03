@@ -33,6 +33,7 @@ type Section = 'header' | 'footer';
 export interface AppConfig {
 	site: {
 		name: string;
+		copyright?: string;
 		logoUrl?: string;
 	};
 	i18n: {
@@ -55,6 +56,8 @@ export function validateConfigDev(c: AppConfig): void {
 	const err = (m: string) => new Error(`Invalid app config: ${m}`);
 
 	if (typeof c.site.name !== 'string') throw err('site.name must be string');
+	if (c.site.copyright != null && typeof c.site.copyright !== 'string')
+		throw err('site.copyright must be string if provided');
 	if (c.site.logoUrl != null && typeof c.site.logoUrl !== 'string')
 		throw err('site.logoUrl must be string if provided');
 
@@ -183,6 +186,7 @@ export function cfg<T = unknown>(path: string, fallback?: T): T {
 
 /* --------- Narrow helpers --------- */
 export const siteName = () => getConfig().site.name;
+export const siteCopyright = () => getConfig().site.copyright ?? getConfig().site.name;
 export const siteLogo = () => getConfig().site.logoUrl;
 export const defaultLang = () => getConfig().i18n.defaultLang;
 export const supportedLangs = () => getConfig().i18n.supported;
