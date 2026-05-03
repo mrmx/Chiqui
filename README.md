@@ -1,0 +1,218 @@
+# <img src="./sites/docs/static/img/logo.svg" alt="Chiky logo" width="96" height="96" valign="middle" /> Chiky
+
+---
+Chiky is a lightweight, content-driven static site generator built on top of
+[SvelteKit](https://svelte.dev/docs/kit). It is designed for small product sites, documentation sites, and
+multilingual static websites where Markdown content is the source of truth.
+
+The project provides a reusable Svelte package (`chiky`) plus a docs site that
+acts as the reference implementation.
+
+## Features
+
+- Markdown-first content in `content/{lang}/`.
+- Built-in i18n routing with canonical IDs across translations.
+- [SvelteKit](https://github.com/sveltejs/kit) static generation with [mdsvex](https://github.com/pngwn/MDsveX).
+- Type-safe site config for metadata, languages, and navigation.
+- Header, footer, logo, language selector, theme toggle, hero, carousel, and icon components.
+- Content validation for duplicate routes, missing IDs, and translation lookup issues.
+- Shared Vite and Svelte config helpers for consistent consumer projects.
+
+## Repository Layout
+
+```txt
+.
+├── packages/
+│   └── chiky/          # Reusable Svelte package
+└── sites/
+    └── docs/           # Reference docs site built with chiky
+```
+
+## Requirements
+
+- Node.js, matching `.nvmrc`
+- pnpm
+
+Install dependencies:
+
+```bash
+pnpm install
+```
+
+## Development
+
+Run the docs site:
+
+```bash
+pnpm --filter docs dev
+```
+
+Build the package and docs site:
+
+```bash
+pnpm build
+```
+
+Run checks:
+
+```bash
+pnpm check
+```
+
+Run tests:
+
+```bash
+pnpm test
+```
+
+## Using Chiky In A Site
+
+Install the package in your SvelteKit site:
+
+```bash
+pnpm add chiky
+```
+
+Create a root `config.ts`:
+
+```ts
+import type { AppConfig } from 'chiky';
+
+const config: AppConfig = {
+	site: {
+		name: 'My Site',
+		logoUrl: '/img/logo.svg',
+		copyright: 'My Company'
+	},
+	i18n: {
+		defaultLang: 'en',
+		supported: ['en', 'es']
+	},
+	nav: {
+		header: {
+			show: true,
+			items: {
+				en: [{ name: 'Home', href: '/en' }],
+				es: [{ name: 'Inicio', href: '/es' }]
+			}
+		},
+		footer: {
+			show: true,
+			items: {
+				en: [],
+				es: []
+			}
+		}
+	}
+};
+
+export default config;
+```
+
+Initialize and re-export config helpers from `src/lib/config.ts`:
+
+```ts
+import rawConfig from '../../config';
+import { initConfig } from 'chiky/config';
+
+initConfig(rawConfig, { validate: true });
+
+export * from 'chiky/config';
+```
+
+Load content from `src/lib/content.ts`:
+
+```ts
+import { createContent } from 'chiky/content';
+
+const modules = import.meta.glob('/content/**/*.md', { eager: true });
+
+export const {
+	contents,
+	index,
+	validateIndex,
+	getContent,
+	getTranslatedSlug,
+	getHreflangAlternates,
+	contentRoutes
+} = createContent(modules);
+```
+
+Use the provided components in your layout:
+
+```svelte
+<script lang="ts">
+	import { Header, Footer } from 'chiky/components';
+	import { showFooter } from '$lib/config';
+	import { getTranslatedSlug } from '$lib/content';
+
+	let { children } = $props();
+</script>
+
+<Header {getTranslatedSlug} />
+
+<main>
+	{@render children?.()}
+</main>
+
+{#if showFooter()}
+	<Footer />
+{/if}
+```
+
+## Content Model
+
+Content files live in `content/{lang}/{slug}.md`.
+
+```md
+---
+id: home
+title: Welcome
+---
+
+Hello world.
+```
+
+The `id` field is the canonical content identifier. Use the same `id` across
+languages to connect translations:
+
+```txt
+content/en/about.md     # id: about
+content/es/acerca.md    # id: about
+```
+
+Routes are generated from the language and slug:
+
+```txt
+content/en/about.md  -> /en/about
+content/es/acerca.md -> /es/acerca
+content/en/index.md  -> /en
+```
+
+## Package Exports
+
+Chiky exposes focused entry points:
+
+- `chiky`
+- `chiky/config`
+- `chiky/content`
+- `chiky/components`
+- `chiky/navigation`
+- `chiky/vite`
+- `chiky/svelte-config`
+- `chiky/types`
+
+## Docs Site
+
+The `sites/docs` project is the canonical working example. It shows:
+
+- root site config
+- content loading with `import.meta.glob`
+- multilingual Markdown content
+- catch-all routing
+- shared Chiky components
+- Tailwind CSS 4 and DaisyUI integration
+
+## License
+
+License information has not been added yet.
