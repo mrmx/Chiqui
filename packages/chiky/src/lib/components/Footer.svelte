@@ -1,6 +1,5 @@
 <script lang="ts">
-	import { siteName, siteLogo, footerNavItems, isLink, isGroup, defaultLang } from '$lib/config';
-	import Icon from './Icon.svelte';
+	import { siteName, footerNavItems, isGroup, defaultLang } from '$lib/config';
 	import NavLink from './NavLink.svelte';
 	import SiteLogo from './SiteLogo.svelte';
 
@@ -9,7 +8,7 @@
 
 	let { lang = defaultLang() } = $props();
 
-	const navItems = footerNavItems(lang);
+	let navItems = $derived(footerNavItems(lang));
 </script>
 
 <footer class="footer">

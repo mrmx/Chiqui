@@ -6,6 +6,12 @@
 	import LanguageSelect from './LanguageSelect.svelte';
 	import SiteLogo from './SiteLogo.svelte';
 
+	let {
+		getTranslatedSlug
+	}: {
+		getTranslatedSlug?: (currentLang: string, currentSlug: string, targetLang: string) => string | null;
+	} = $props();
+
 	let currentLang = $derived($page.params.lang || defaultLang());
 	let currentPath = $derived($page.url.pathname);
 	const langs = supportedLangs();
@@ -30,7 +36,7 @@
 		</ul>
 
 		{#if langs.length > 1}
-			<LanguageSelect lang={currentLang} />
+			<LanguageSelect lang={currentLang} {getTranslatedSlug} />
 		{/if}
 
 		<LightDarkMode />

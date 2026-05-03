@@ -34,6 +34,10 @@ function parseModules(modules: Record<string, any>): ContentEntry[] {
 
 // --- Build index & validate -------------------------------------------------
 
+function slugKey(lang: string, slug: string): string {
+	return `${lang}/${slug}`;
+}
+
 function buildIndex(list: ContentEntry[]): ContentIndex {
 	const errors: string[] = [];
 	const warnings: string[] = [];
@@ -51,14 +55,11 @@ function buildIndex(list: ContentEntry[]): ContentIndex {
 			);
 		}
 
-		if (e.slug !== '') {
-			if (bySlug[e.slug]) {
-				errors.push(
-					`[E:slug-dup] Duplicate slug '${e.slug}' for languages '${bySlug[e.slug].lang}' and '${e.lang}'.`
-				);
-			} else {
-				bySlug[e.slug] = e;
-			}
+		const routeKey = slugKey(e.lang, e.slug);
+		if (bySlug[routeKey]) {
+			errors.push(`[E:slug-dup] Duplicate slug '${e.slug}' for lang='${e.lang}'.`);
+		} else {
+			bySlug[routeKey] = e;
 		}
 
 		const id = e.metadata.id;
@@ -131,8 +132,8 @@ export function createContent(modules: Record<string, any>): ContentStore {
 		currentSlug: string,
 		targetLang: string
 	): string | null {
-		const current = index.bySlug[currentSlug];
-		if (!current || current.lang !== currentLang) return null;
+		const current = index.bySlug[slugKey(currentLang, currentSlug)];
+		if (!current) return null;
 		const id = current.metadata.id;
 		const t = index.byId[id]?.[targetLang];
 		return t ? `${t.slug}` : null;
@@ -143,8 +144,8 @@ export function createContent(modules: Record<string, any>): ContentStore {
 		slug: string,
 		origin: string
 	): Array<{ lang: string; href: string }> {
-		const current = index.bySlug[slug];
-		if (!current || current.lang !== lang) return [];
+		const current = index.bySlug[slugKey(lang, slug)];
+		if (!current) return [];
 		const id = current.metadata.id;
 		const entries = index.byId[id] ?? {};
 		const base = origin.replace(/\/+$/, '');

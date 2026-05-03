@@ -1,4 +1,6 @@
 @import 'tailwindcss';
+@source "../../../packages/chiky/src";
+@source "../../../packages/chiky/dist";
 @plugin "@tailwindcss/typography";
 @plugin "daisyui" {
 	themes:
