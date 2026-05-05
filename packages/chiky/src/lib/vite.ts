@@ -7,7 +7,9 @@
  * export default chikyViteConfig();
  * ```
  */
-import type { UserConfig } from 'vite';
+import type { UserConfig as ViteUserConfig } from 'vite';
+
+type UserConfig = ViteUserConfig & { test?: Record<string, unknown> };
 
 export interface ChikyViteOptions {
 	/** Extra Vite config to merge */
