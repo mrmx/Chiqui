@@ -1,5 +1,11 @@
 # <img src="./sites/docs/static/img/logo.svg" alt="Chiky logo" width="96" height="96" valign="middle" /> Chiky
 
+[![npm version](https://img.shields.io/npm/v/chiky.svg)](https://www.npmjs.com/package/chiky)
+[![npm downloads](https://img.shields.io/npm/dm/chiky.svg)](https://www.npmjs.com/package/chiky)
+[![CI](https://github.com/mrmx/Chiky/actions/workflows/ci.yml/badge.svg)](https://github.com/mrmx/Chiky/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
+[![SvelteKit](https://img.shields.io/badge/SvelteKit-2-ff3e00.svg?logo=svelte)](https://svelte.dev/docs/kit)
+
 ---
 Chiky is a lightweight, content-driven static site generator built on top of
 [SvelteKit](https://svelte.dev/docs/kit). It is designed for small product sites, documentation sites, and
@@ -215,4 +221,4 @@ The `sites/docs` project is the canonical working example. It shows:
 
 ## License
 
-License information has not been added yet.
+MIT — see [LICENSE](./LICENSE).
