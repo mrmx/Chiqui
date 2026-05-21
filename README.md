@@ -1,223 +1,49 @@
 # <img src="./sites/docs/static/img/logo.svg" alt="Chiqui logo" width="96" height="96" valign="middle" /> Chiqui
 
 [![npm version](https://img.shields.io/npm/v/@mrmx/chiqui.svg)](https://www.npmjs.com/package/@mrmx/chiqui)
-[![npm downloads](https://img.shields.io/npm/dm/@mrmx/chiqui.svg)](https://www.npmjs.com/package/@mrmx/chiqui)
 [![CI](https://github.com/mrmx/Chiqui/actions/workflows/ci.yml/badge.svg)](https://github.com/mrmx/Chiqui/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
-[![SvelteKit](https://img.shields.io/badge/SvelteKit-2-ff3e00.svg?logo=svelte)](https://svelte.dev/docs/kit)
 
----
-Chiqui is a lightweight, content-driven static site generator built on top of
-[SvelteKit](https://svelte.dev/docs/kit). It is designed for small product sites, documentation sites, and
-multilingual static websites where Markdown content is the source of truth.
+Content-driven SvelteKit SSG framework with i18n, mdsvex content pipeline, and DaisyUI components.
 
-The project provides a reusable Svelte package (`@mrmx/chiqui`) plus a docs site that
-acts as the reference implementation.
+> Looking for **how to use Chiqui in your site**? See the package readme:
+> **[packages/chiqui/README.md](./packages/chiqui/README.md)** or [`@mrmx/chiqui` on npm](https://www.npmjs.com/package/@mrmx/chiqui).
 
-## Features
-
-- Markdown-first content in `content/{lang}/`.
-- Built-in i18n routing with canonical IDs across translations.
-- [SvelteKit](https://github.com/sveltejs/kit) static generation with [mdsvex](https://github.com/pngwn/MDsveX).
-- Type-safe site config for metadata, languages, and navigation.
-- Header, footer, logo, language selector, theme toggle, hero, carousel, and icon components.
-- Content validation for duplicate routes, missing IDs, and translation lookup issues.
-- Shared Vite and Svelte config helpers for consistent consumer projects.
+This repository is a pnpm monorepo containing the published package and its docs site.
 
 ## Repository Layout
 
 ```txt
 .
 ├── packages/
-│   └── chiqui/         # Reusable Svelte package
+│   └── chiqui/         # Reusable Svelte package — published to npm as @mrmx/chiqui
 └── sites/
-    └── docs/           # Reference docs site built with chiqui
-```
-
-## Requirements
-
-- Node.js, matching `.nvmrc`
-- pnpm
-
-Install dependencies:
-
-```bash
-pnpm install
+    └── docs/           # Reference docs site that dogfoods chiqui
 ```
 
 ## Development
 
-Run the docs site:
+Requires Node (see `.nvmrc`) and pnpm.
 
 ```bash
-pnpm --filter docs dev
+pnpm install
+pnpm --filter docs dev              # Dev server for docs site
+pnpm --filter '@mrmx/chiqui' build  # Build the package
+pnpm build                          # Build everything
+pnpm -r check                       # svelte-check + TypeScript
+pnpm -r test                        # All tests
+pnpm format                         # Prettier
 ```
 
-Build the package and docs site:
+## Release
+
+The `publish.yml` workflow publishes `@mrmx/chiqui` to npm on tags `v*`.
 
 ```bash
-pnpm build
+# bump packages/chiqui/package.json version, then:
+git tag v0.1.x
+git push origin v0.1.x
 ```
-
-Run checks:
-
-```bash
-pnpm check
-```
-
-Run tests:
-
-```bash
-pnpm test
-```
-
-## Using Chiqui In A Site
-
-Install the package in your SvelteKit site:
-
-```bash
-pnpm add @mrmx/chiqui
-```
-
-Create a root `config.ts`:
-
-```ts
-import type { AppConfig } from '@mrmx/chiqui';
-
-const config: AppConfig = {
-	site: {
-		name: 'My Site',
-		logoUrl: '/img/logo.svg',
-		copyright: 'My Company'
-	},
-	i18n: {
-		defaultLang: 'en',
-		supported: ['en', 'es']
-	},
-	nav: {
-		header: {
-			show: true,
-			items: {
-				en: [{ name: 'Home', href: '/en' }],
-				es: [{ name: 'Inicio', href: '/es' }]
-			}
-		},
-		footer: {
-			show: true,
-			items: {
-				en: [],
-				es: []
-			}
-		}
-	}
-};
-
-export default config;
-```
-
-Initialize and re-export config helpers from `src/lib/config.ts`:
-
-```ts
-import rawConfig from '../../config';
-import { initConfig } from '@mrmx/chiqui/config';
-
-initConfig(rawConfig, { validate: true });
-
-export * from '@mrmx/chiqui/config';
-```
-
-Load content from `src/lib/content.ts`:
-
-```ts
-import { createContent } from '@mrmx/chiqui/content';
-
-const modules = import.meta.glob('/content/**/*.md', { eager: true });
-
-export const {
-	contents,
-	index,
-	validateIndex,
-	getContent,
-	getTranslatedSlug,
-	getHreflangAlternates,
-	contentRoutes
-} = createContent(modules);
-```
-
-Use the provided components in your layout:
-
-```svelte
-<script lang="ts">
-	import { Header, Footer } from '@mrmx/chiqui/components';
-	import { showFooter } from '$lib/config';
-	import { getTranslatedSlug } from '$lib/content';
-
-	let { children } = $props();
-</script>
-
-<Header {getTranslatedSlug} />
-
-<main>
-	{@render children?.()}
-</main>
-
-{#if showFooter()}
-	<Footer />
-{/if}
-```
-
-## Content Model
-
-Content files live in `content/{lang}/{slug}.md`.
-
-```md
----
-id: home
-title: Welcome
----
-
-Hello world.
-```
-
-The `id` field is the canonical content identifier. Use the same `id` across
-languages to connect translations:
-
-```txt
-content/en/about.md     # id: about
-content/es/acerca.md    # id: about
-```
-
-Routes are generated from the language and slug:
-
-```txt
-content/en/about.md  -> /en/about
-content/es/acerca.md -> /es/acerca
-content/en/index.md  -> /en
-```
-
-## Package Exports
-
-Chiqui exposes focused entry points:
-
-- `@mrmx/chiqui`
-- `@mrmx/chiqui/config`
-- `@mrmx/chiqui/content`
-- `@mrmx/chiqui/components`
-- `@mrmx/chiqui/navigation`
-- `@mrmx/chiqui/vite`
-- `@mrmx/chiqui/svelte-config`
-- `@mrmx/chiqui/types`
-
-## Docs Site
-
-The `sites/docs` project is the canonical working example. It shows:
-
-- root site config
-- content loading with `import.meta.glob`
-- multilingual Markdown content
-- catch-all routing
-- shared Chiqui components
-- Tailwind CSS 4 and DaisyUI integration
 
 ## License
 
