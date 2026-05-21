@@ -1,9 +1,9 @@
-import { initConfig } from 'chiky/config';
+import { initConfig } from '@mrmx/chiqui/config';
 import rawConfig from '$config';
 
 export const config = initConfig(rawConfig, { validate: true });
 
-// Re-export chiky helpers (they read from the initialized config)
+// Re-export chiqui helpers (they read from the initialized config)
 export {
 	getConfig,
 	siteName,
@@ -21,4 +21,4 @@ export {
 	isLink,
 	showSection,
 	cfg
-} from 'chiky/config';
+} from '@mrmx/chiqui/config';

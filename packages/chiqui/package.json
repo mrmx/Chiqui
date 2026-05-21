@@ -1,18 +1,18 @@
 {
-  "name": "chiky",
+  "name": "@mrmx/chiqui",
   "version": "0.1.0",
   "description": "Content-driven SvelteKit SSG framework with i18n, mdsvex content pipeline, and DaisyUI components.",
   "type": "module",
   "license": "MIT",
   "author": "mrmx <mistermx@gmail.com>",
-  "homepage": "https://github.com/mrmx/Chiky#readme",
+  "homepage": "https://github.com/mrmx/Chiqui#readme",
   "bugs": {
-    "url": "https://github.com/mrmx/Chiky/issues"
+    "url": "https://github.com/mrmx/Chiqui/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mrmx/Chiky.git",
-    "directory": "packages/chiky"
+    "url": "git+https://github.com/mrmx/Chiqui.git",
+    "directory": "packages/chiqui"
   },
   "keywords": [
     "sveltekit",

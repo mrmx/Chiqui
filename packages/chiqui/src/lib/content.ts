@@ -1,7 +1,7 @@
-// Content loading & validation utilities for chiky SSG.
+// Content loading & validation utilities for chiqui SSG.
 // The consumer calls createContent(modules) passing the result of
 // import.meta.glob('/content/**/*.md', { eager: true }).
-// This keeps Vite's glob in the consumer's context while chiky owns the logic.
+// This keeps Vite's glob in the consumer's context while chiqui owns the logic.
 
 import type { Component } from 'svelte';
 import type { ContentEntry, ContentFrontmatter, ContentIndex } from './types.js';

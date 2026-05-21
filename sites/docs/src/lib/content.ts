@@ -1,4 +1,4 @@
-import { createContent } from 'chiky/content';
+import { createContent } from '@mrmx/chiqui/content';
 
 const modules = import.meta.glob('/content/**/*.md', { eager: true });
 

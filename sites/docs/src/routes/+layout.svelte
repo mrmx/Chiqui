@@ -1,6 +1,6 @@
 <script lang="ts">
 	import '../app.css';
-	import { Header, Footer } from 'chiky/components';
+	import { Header, Footer } from '@mrmx/chiqui/components';
 	import { showFooter } from '$lib/config';
 	import { getTranslatedSlug } from '$lib/content';
 

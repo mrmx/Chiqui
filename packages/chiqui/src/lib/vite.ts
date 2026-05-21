@@ -1,17 +1,17 @@
 /**
- * Vite config helper for chiky sites.
+ * Vite config helper for chiqui sites.
  *
  * Usage in your site's vite.config.ts:
  * ```ts
- * import { chikyViteConfig } from 'chiky/vite';
- * export default chikyViteConfig();
+ * import { chiquiViteConfig } from '@mrmx/chiqui/vite';
+ * export default chiquiViteConfig();
  * ```
  */
 import type { UserConfig as ViteUserConfig } from 'vite';
 
 type UserConfig = ViteUserConfig & { test?: Record<string, unknown> };
 
-export interface ChikyViteOptions {
+export interface ChiquiViteOptions {
 	/** Extra Vite config to merge */
 	vite?: UserConfig;
 	/** Coverage thresholds (defaults: 80/70/80/80) */
@@ -23,7 +23,7 @@ export interface ChikyViteOptions {
 	};
 }
 
-export function chikyViteConfig(options: ChikyViteOptions = {}): UserConfig {
+export function chiquiViteConfig(options: ChiquiViteOptions = {}): UserConfig {
 	const { coverage: cov } = options;
 	return {
 		server: {

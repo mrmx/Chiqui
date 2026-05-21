@@ -10,7 +10,7 @@ title: Documentation
 ```bash
 mkdir my-site && cd my-site
 pnpm init
-pnpm add chiky
+pnpm add @mrmx/chiqui
 ```
 
 ### 2. Add your config
@@ -18,7 +18,7 @@ pnpm add chiky
 Create `config.ts` at the root of your project:
 
 ```ts
-import type { AppConfig } from 'chiky';
+import type { AppConfig } from '@mrmx/chiqui';
 
 const config: AppConfig = {
   site: { name: 'My Site' },
@@ -45,8 +45,8 @@ title: Welcome
 Hello world!
 ```
 
-### 4. Wire up chiky
+### 4. Wire up chiqui
 
-Create the thin integration layer in `src/lib/config.ts` and `src/lib/content.ts`, then use chiky components in your layout.
+Create the thin integration layer in `src/lib/config.ts` and `src/lib/content.ts`, then use chiqui components in your layout.
 
-See the [docs site source](https://github.com/mrmx/chiky) for a complete working example.
+See the [docs site source](https://github.com/mrmx/Chiqui) for a complete working example.

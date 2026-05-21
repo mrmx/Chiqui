@@ -10,7 +10,7 @@ title: Documentación
 ```bash
 mkdir mi-sitio && cd mi-sitio
 pnpm init
-pnpm add chiky
+pnpm add @mrmx/chiqui
 ```
 
 ### 2. Añadir tu configuración
@@ -18,7 +18,7 @@ pnpm add chiky
 Crea `config.ts` en la raíz de tu proyecto:
 
 ```ts
-import type { AppConfig } from 'chiky';
+import type { AppConfig } from '@mrmx/chiqui';
 
 const config: AppConfig = {
   site: { name: 'Mi Sitio' },
@@ -45,8 +45,8 @@ title: Bienvenido
 ¡Hola mundo!
 ```
 
-### 4. Conectar chiky
+### 4. Conectar chiqui
 
-Crea la capa de integración en `src/lib/config.ts` y `src/lib/content.ts`, luego usa los componentes de chiky en tu layout.
+Crea la capa de integración en `src/lib/config.ts` y `src/lib/content.ts`, luego usa los componentes de chiqui en tu layout.
 
-Consulta el [código fuente del sitio docs](https://github.com/mrmx/chiky) para un ejemplo funcional completo.
+Consulta el [código fuente del sitio docs](https://github.com/mrmx/Chiqui) para un ejemplo funcional completo.

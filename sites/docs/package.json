@@ -14,7 +14,7 @@
     "test:cov": "vitest run --coverage"
   },
   "dependencies": {
-    "chiky": "workspace:*"
+    "@mrmx/chiqui": "workspace:*"
   },
   "devDependencies": {
     "@sveltejs/adapter-auto": "^6.1.1",

@@ -123,7 +123,7 @@ export interface InitConfigOptions {
 }
 
 /**
- * Initialize chiky with a site config. Must be called once before using config helpers.
+ * Initialize chiqui with a site config. Must be called once before using config helpers.
  * Typically called in your site's root layout or hooks.
  */
 export function initConfig(rawConfig: AppConfig, options: InitConfigOptions = {}): AppConfig {
@@ -133,7 +133,7 @@ export function initConfig(rawConfig: AppConfig, options: InitConfigOptions = {}
 }
 
 export function getConfig(): AppConfig {
-	if (!cached) throw new Error('chiky: call initConfig() before using config helpers');
+	if (!cached) throw new Error('chiqui: call initConfig() before using config helpers');
 	return cached;
 }
 

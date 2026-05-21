@@ -15,7 +15,7 @@ importers:
         specifier: ^3.4.0
         version: 3.5.1(prettier@3.8.1)(svelte@5.55.1)
 
-  packages/chiky:
+  packages/chiqui:
     dependencies:
       '@iconify/svelte':
         specifier: ^5.0.2
@@ -51,9 +51,9 @@ importers:
 
   sites/docs:
     dependencies:
-      chiky:
+      '@mrmx/chiqui':
         specifier: workspace:*
-        version: link:../../packages/chiky
+        version: link:../../packages/chiqui
     devDependencies:
       '@sveltejs/adapter-auto':
         specifier: ^6.1.1

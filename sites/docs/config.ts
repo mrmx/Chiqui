@@ -1,10 +1,10 @@
-import type { AppConfig } from 'chiky';
+import type { AppConfig } from '@mrmx/chiqui';
 
 const extTarget = '_blank';
 
 const config: AppConfig = {
 	site: {
-		name: 'Chiky',
+		name: 'Chiqui',
 		logoUrl: '/img/logo.svg'
 	},
 	i18n: {
@@ -22,7 +22,7 @@ const config: AppConfig = {
 						name: '',
 						title: 'GitHub',
 						icon: 'streamline-logos:github-logo-2',
-						href: 'https://github.com/mrmx/chiky',
+						href: 'https://github.com/mrmx/Chiqui',
 						target: extTarget
 					}
 				],
@@ -33,7 +33,7 @@ const config: AppConfig = {
 						name: '',
 						title: 'GitHub',
 						icon: 'streamline-logos:github-logo-2',
-						href: 'https://github.com/mrmx/chiky',
+						href: 'https://github.com/mrmx/Chiqui',
 						target: extTarget
 					}
 				]
@@ -48,7 +48,7 @@ const config: AppConfig = {
 						items: [
 							{
 								name: 'GitHub',
-								href: 'https://github.com/mrmx/chiky',
+								href: 'https://github.com/mrmx/Chiqui',
 								target: extTarget
 							}
 						]
@@ -60,7 +60,7 @@ const config: AppConfig = {
 						items: [
 							{
 								name: 'GitHub',
-								href: 'https://github.com/mrmx/chiky',
+								href: 'https://github.com/mrmx/Chiqui',
 								target: extTarget
 							}
 						]

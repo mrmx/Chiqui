@@ -1,4 +1,4 @@
-name: Publish chiky to npm
+name: Publish chiqui to npm
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
 
 jobs:
   publish:
-    if: github.repository == 'mrmx/Chiky'
+    if: github.repository == 'mrmx/Chiqui'
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -26,11 +26,11 @@ jobs:
           registry-url: 'https://registry.npmjs.org/'
 
       - run: pnpm install --frozen-lockfile
-      - run: pnpm --filter chiky check
-      - run: pnpm --filter chiky build
+      - run: pnpm --filter '@mrmx/chiqui' check
+      - run: pnpm --filter '@mrmx/chiqui' build
 
       - name: Publish to npm
-        working-directory: packages/chiky
+        working-directory: packages/chiqui
         run: pnpm publish --access public --provenance --no-git-checks
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
@@ -41,10 +41,10 @@ jobs:
           VERSION="${GITHUB_REF_NAME#v}"
           gh release create "$GITHUB_REF_NAME" \
             --title "$GITHUB_REF_NAME" \
-            --notes "## chiky@${VERSION}
+            --notes "## @mrmx/chiqui@${VERSION}
 
-          **npm:** [\`chiky@${VERSION}\`](https://www.npmjs.com/package/chiky/v/${VERSION})
-          **Install:** \`npm install chiky@${VERSION}\`" \
+          **npm:** [\`@mrmx/chiqui@${VERSION}\`](https://www.npmjs.com/package/@mrmx/chiqui/v/${VERSION})
+          **Install:** \`npm install @mrmx/chiqui@${VERSION}\`" \
             || echo "Release already exists"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

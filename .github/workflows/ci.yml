@@ -22,7 +22,7 @@ jobs:
           cache: pnpm
 
       - run: pnpm install --frozen-lockfile
-      - run: pnpm --filter chiky build
+      - run: pnpm --filter '@mrmx/chiqui' build
       - run: pnpm -r check
       - run: pnpm -r test
       - run: pnpm --filter docs build

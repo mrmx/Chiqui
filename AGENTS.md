@@ -4,39 +4,39 @@ This file provides guidance to AI coding agents when working with code in this r
 
 ## Overview
 
-Chiky is an open-source, content-driven SSG framework built on SvelteKit + mdsvex. This is a pnpm monorepo.
+Chiqui is an open-source, content-driven SSG framework built on SvelteKit + mdsvex. This is a pnpm monorepo.
 
 ## Structure
 
 ```
-packages/chiky/     # The npm package — lib (types, config, content, navigation) + Svelte components
-sites/docs/         # Documentation site that dogfoods chiky as a dependency
+packages/chiqui/    # The npm package (@mrmx/chiqui) — lib (types, config, content, navigation) + Svelte components
+sites/docs/         # Documentation site that dogfoods chiqui as a dependency
 ```
 
 ## Commands
 
 ```bash
-pnpm install                      # Install all workspace deps
-pnpm --filter chiky build         # Build the chiky package (svelte-package → dist/)
-pnpm --filter docs dev            # Dev server for docs site
-pnpm --filter docs build          # Production build for docs site
-pnpm --filter docs test           # Run vitest for docs site
-pnpm --filter docs check          # svelte-check + TypeScript validation
-pnpm build                        # Build chiky package then docs site
-pnpm test                         # Run all tests across workspace
+pnpm install                              # Install all workspace deps
+pnpm --filter '@mrmx/chiqui' build        # Build the chiqui package (svelte-package → dist/)
+pnpm --filter docs dev                    # Dev server for docs site
+pnpm --filter docs build                  # Production build for docs site
+pnpm --filter docs test                   # Run vitest for docs site
+pnpm --filter docs check                  # svelte-check + TypeScript validation
+pnpm build                                # Build chiqui package then docs site
+pnpm test                                 # Run all tests across workspace
 ```
 
 ## Architecture
 
-### packages/chiky
+### packages/chiqui
 
-Exports via subpath exports (`chiky`, `chiky/config`, `chiky/content`, `chiky/components`, `chiky/navigation`, `chiky/vite`, `chiky/svelte-config`).
+Exports via subpath exports (`@mrmx/chiqui`, `@mrmx/chiqui/config`, `@mrmx/chiqui/content`, `@mrmx/chiqui/components`, `@mrmx/chiqui/navigation`, `@mrmx/chiqui/vite`, `@mrmx/chiqui/svelte-config`).
 
 Key design decisions:
-- **`initConfig(rawConfig)`** — consumer provides their AppConfig, chiky caches and exposes helpers (siteName, navItems, etc.)
+- **`initConfig(rawConfig)`** — consumer provides their AppConfig, chiqui caches and exposes helpers (siteName, navItems, etc.)
 - **`createContent(modules)`** — factory that takes `import.meta.glob` result from the consumer (Vite glob must run in consumer context)
 - **`createSvelteConfig(adapter, vitePreprocess, mdsvex)`** — generates standard SvelteKit config
-- **`chikyViteConfig()`** — returns Vite config with test/coverage defaults
+- **`chiquiViteConfig()`** — returns Vite config with test/coverage defaults
 - Components use `$lib/` imports internally (resolved by svelte-package during build)
 
 ### Consumer pattern (sites/docs shows the canonical example)
@@ -46,7 +46,7 @@ Key design decisions:
 3. `src/lib/content.ts` — calls `createContent(import.meta.glob(...))` and re-exports
 4. `src/hooks.server.ts` — imports config (triggers init) + validates content
 5. Routes import from `$lib/config` and `$lib/content` (the site's thin wrappers)
-6. Layout uses `<Header />` and `<Footer />` from `chiky/components`
+6. Layout uses `<Header />` and `<Footer />` from `@mrmx/chiqui/components`
 
 ### Content system
 

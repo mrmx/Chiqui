@@ -1,17 +1,17 @@
-# <img src="./sites/docs/static/img/logo.svg" alt="Chiky logo" width="96" height="96" valign="middle" /> Chiky
+# <img src="./sites/docs/static/img/logo.svg" alt="Chiqui logo" width="96" height="96" valign="middle" /> Chiqui
 
-[![npm version](https://img.shields.io/npm/v/chiky.svg)](https://www.npmjs.com/package/chiky)
-[![npm downloads](https://img.shields.io/npm/dm/chiky.svg)](https://www.npmjs.com/package/chiky)
-[![CI](https://github.com/mrmx/Chiky/actions/workflows/ci.yml/badge.svg)](https://github.com/mrmx/Chiky/actions/workflows/ci.yml)
+[![npm version](https://img.shields.io/npm/v/@mrmx/chiqui.svg)](https://www.npmjs.com/package/@mrmx/chiqui)
+[![npm downloads](https://img.shields.io/npm/dm/@mrmx/chiqui.svg)](https://www.npmjs.com/package/@mrmx/chiqui)
+[![CI](https://github.com/mrmx/Chiqui/actions/workflows/ci.yml/badge.svg)](https://github.com/mrmx/Chiqui/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
 [![SvelteKit](https://img.shields.io/badge/SvelteKit-2-ff3e00.svg?logo=svelte)](https://svelte.dev/docs/kit)
 
 ---
-Chiky is a lightweight, content-driven static site generator built on top of
+Chiqui is a lightweight, content-driven static site generator built on top of
 [SvelteKit](https://svelte.dev/docs/kit). It is designed for small product sites, documentation sites, and
 multilingual static websites where Markdown content is the source of truth.
 
-The project provides a reusable Svelte package (`chiky`) plus a docs site that
+The project provides a reusable Svelte package (`@mrmx/chiqui`) plus a docs site that
 acts as the reference implementation.
 
 ## Features
@@ -29,9 +29,9 @@ acts as the reference implementation.
 ```txt
 .
 ├── packages/
-│   └── chiky/          # Reusable Svelte package
+│   └── chiqui/         # Reusable Svelte package
 └── sites/
-    └── docs/           # Reference docs site built with chiky
+    └── docs/           # Reference docs site built with chiqui
 ```
 
 ## Requirements
@@ -71,18 +71,18 @@ Run tests:
 pnpm test
 ```
 
-## Using Chiky In A Site
+## Using Chiqui In A Site
 
 Install the package in your SvelteKit site:
 
 ```bash
-pnpm add chiky
+pnpm add @mrmx/chiqui
 ```
 
 Create a root `config.ts`:
 
 ```ts
-import type { AppConfig } from 'chiky';
+import type { AppConfig } from '@mrmx/chiqui';
 
 const config: AppConfig = {
 	site: {
@@ -119,17 +119,17 @@ Initialize and re-export config helpers from `src/lib/config.ts`:
 
 ```ts
 import rawConfig from '../../config';
-import { initConfig } from 'chiky/config';
+import { initConfig } from '@mrmx/chiqui/config';
 
 initConfig(rawConfig, { validate: true });
 
-export * from 'chiky/config';
+export * from '@mrmx/chiqui/config';
 ```
 
 Load content from `src/lib/content.ts`:
 
 ```ts
-import { createContent } from 'chiky/content';
+import { createContent } from '@mrmx/chiqui/content';
 
 const modules = import.meta.glob('/content/**/*.md', { eager: true });
 
@@ -148,7 +148,7 @@ Use the provided components in your layout:
 
 ```svelte
 <script lang="ts">
-	import { Header, Footer } from 'chiky/components';
+	import { Header, Footer } from '@mrmx/chiqui/components';
 	import { showFooter } from '$lib/config';
 	import { getTranslatedSlug } from '$lib/content';
 
@@ -197,16 +197,16 @@ content/en/index.md  -> /en
 
 ## Package Exports
 
-Chiky exposes focused entry points:
+Chiqui exposes focused entry points:
 
-- `chiky`
-- `chiky/config`
-- `chiky/content`
-- `chiky/components`
-- `chiky/navigation`
-- `chiky/vite`
-- `chiky/svelte-config`
-- `chiky/types`
+- `@mrmx/chiqui`
+- `@mrmx/chiqui/config`
+- `@mrmx/chiqui/content`
+- `@mrmx/chiqui/components`
+- `@mrmx/chiqui/navigation`
+- `@mrmx/chiqui/vite`
+- `@mrmx/chiqui/svelte-config`
+- `@mrmx/chiqui/types`
 
 ## Docs Site
 
@@ -216,7 +216,7 @@ The `sites/docs` project is the canonical working example. It shows:
 - content loading with `import.meta.glob`
 - multilingual Markdown content
 - catch-all routing
-- shared Chiky components
+- shared Chiqui components
 - Tailwind CSS 4 and DaisyUI integration
 
 ## License

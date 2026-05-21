@@ -1,27 +1,27 @@
 /**
- * SvelteKit config helper for chiky sites.
+ * SvelteKit config helper for chiqui sites.
  *
  * Usage in your site's svelte.config.js:
  * ```js
- * import { createSvelteConfig } from 'chiky/svelte-config';
+ * import { createSvelteConfig } from '@mrmx/chiqui/svelte-config';
  * export default createSvelteConfig();
  * ```
  */
 
-export interface ChikySvelteConfigOptions {
+export interface ChiquiSvelteConfigOptions {
 	/** Extra aliases beyond $config */
 	aliases?: Record<string, string>;
 }
 
 /**
- * Creates a standard SvelteKit config for chiky sites.
+ * Creates a standard SvelteKit config for chiqui sites.
  * Must be called in svelte.config.js where adapter/preprocessors are available.
  */
 export function createSvelteConfig(
 	adapter: any,
 	vitePreprocess: any,
 	mdsvex: any,
-	options: ChikySvelteConfigOptions = {}
+	options: ChiquiSvelteConfigOptions = {}
 ) {
 	const mdsvexOptions = { extensions: ['.md'] };
 

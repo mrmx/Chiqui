@@ -1,10 +1,10 @@
 {
   "private": true,
-  "name": "chiky-monorepo",
+  "name": "chiqui-monorepo",
   "type": "module",
   "scripts": {
     "dev": "pnpm --filter docs dev",
-    "build": "pnpm --filter chiky build && pnpm --filter docs build",
+    "build": "pnpm --filter @mrmx/chiqui build && pnpm --filter docs build",
     "test": "pnpm -r test",
     "check": "pnpm -r check",
     "format": "prettier -l --write ."
