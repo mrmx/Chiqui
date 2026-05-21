@@ -10,7 +10,7 @@ title: Documentation
 ```bash
 mkdir my-site && cd my-site
 pnpm init
-pnpm add chiqui
+pnpm add chiqui-ssg
 ```
 
 ### 2. Add your config
@@ -18,7 +18,7 @@ pnpm add chiqui
 Create `config.ts` at the root of your project:
 
 ```ts
-import type { AppConfig } from 'chiqui';
+import type { AppConfig } from 'chiqui-ssg';
 
 const config: AppConfig = {
   site: { name: 'My Site' },

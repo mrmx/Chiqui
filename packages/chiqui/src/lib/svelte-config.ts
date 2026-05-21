@@ -3,7 +3,7 @@
  *
  * Usage in your site's svelte.config.js:
  * ```js
- * import { createSvelteConfig } from 'chiqui/svelte-config';
+ * import { createSvelteConfig } from 'chiqui-ssg/svelte-config';
  * export default createSvelteConfig();
  * ```
  */

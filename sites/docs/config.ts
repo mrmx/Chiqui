@@ -1,4 +1,4 @@
-import type { AppConfig } from 'chiqui';
+import type { AppConfig } from 'chiqui-ssg';
 
 const extTarget = '_blank';
 

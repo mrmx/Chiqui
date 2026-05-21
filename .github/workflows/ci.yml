@@ -22,7 +22,7 @@ jobs:
           cache: pnpm
 
       - run: pnpm install --frozen-lockfile
-      - run: pnpm --filter chiqui build
+      - run: pnpm --filter chiqui-ssg build
       - run: pnpm -r check
       - run: pnpm -r test
       - run: pnpm --filter docs build

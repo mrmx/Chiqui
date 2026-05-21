@@ -1,4 +1,4 @@
-import { initConfig } from 'chiqui/config';
+import { initConfig } from 'chiqui-ssg/config';
 import rawConfig from '$config';
 
 export const config = initConfig(rawConfig, { validate: true });
@@ -21,4 +21,4 @@ export {
 	isLink,
 	showSection,
 	cfg
-} from 'chiqui/config';
+} from 'chiqui-ssg/config';

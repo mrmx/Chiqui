@@ -14,7 +14,7 @@
     "test:cov": "vitest run --coverage"
   },
   "dependencies": {
-    "chiqui": "workspace:*"
+    "chiqui-ssg": "workspace:*"
   },
   "devDependencies": {
     "@sveltejs/adapter-auto": "^6.1.1",
