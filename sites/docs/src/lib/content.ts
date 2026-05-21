@@ -1,4 +1,4 @@
-import { createContent } from 'chiqui-ssg/content';
+import { createContent } from '@mrmx/chiqui/content';
 
 const modules = import.meta.glob('/content/**/*.md', { eager: true });
 

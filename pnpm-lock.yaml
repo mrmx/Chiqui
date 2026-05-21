@@ -51,7 +51,7 @@ importers:
 
   sites/docs:
     dependencies:
-      chiqui-ssg:
+      '@mrmx/chiqui':
         specifier: workspace:*
         version: link:../../packages/chiqui
     devDependencies:

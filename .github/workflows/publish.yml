@@ -1,4 +1,4 @@
-name: Publish chiqui-ssg to npm
+name: Publish @mrmx/chiqui to npm
 
 on:
   push:
@@ -26,8 +26,8 @@ jobs:
           registry-url: 'https://registry.npmjs.org/'
 
       - run: pnpm install --frozen-lockfile
-      - run: pnpm --filter chiqui-ssg check
-      - run: pnpm --filter chiqui-ssg build
+      - run: pnpm --filter '@mrmx/chiqui' check
+      - run: pnpm --filter '@mrmx/chiqui' build
 
       - name: Publish to npm
         working-directory: packages/chiqui
@@ -41,10 +41,10 @@ jobs:
           VERSION="${GITHUB_REF_NAME#v}"
           gh release create "$GITHUB_REF_NAME" \
             --title "$GITHUB_REF_NAME" \
-            --notes "## chiqui-ssg@${VERSION}
+            --notes "## @mrmx/chiqui@${VERSION}
 
-          **npm:** [\`chiqui-ssg@${VERSION}\`](https://www.npmjs.com/package/chiqui-ssg/v/${VERSION})
-          **Install:** \`npm install chiqui-ssg@${VERSION}\`" \
+          **npm:** [\`@mrmx/chiqui@${VERSION}\`](https://www.npmjs.com/package/@mrmx/chiqui/v/${VERSION})
+          **Install:** \`npm install @mrmx/chiqui@${VERSION}\`" \
             || echo "Release already exists"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

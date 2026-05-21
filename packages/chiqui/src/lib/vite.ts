@@ -3,7 +3,7 @@
  *
  * Usage in your site's vite.config.ts:
  * ```ts
- * import { chiquiViteConfig } from 'chiqui-ssg/vite';
+ * import { chiquiViteConfig } from '@mrmx/chiqui/vite';
  * export default chiquiViteConfig();
  * ```
  */

@@ -1,5 +1,5 @@
 {
-  "name": "chiqui-ssg",
+  "name": "@mrmx/chiqui",
   "version": "0.1.0",
   "description": "Content-driven SvelteKit SSG framework with i18n, mdsvex content pipeline, and DaisyUI components.",
   "type": "module",
