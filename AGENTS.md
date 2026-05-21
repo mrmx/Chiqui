@@ -9,7 +9,7 @@ Chiqui is an open-source, content-driven SSG framework built on SvelteKit + mdsv
 ## Structure
 
 ```
-packages/chiqui/    # The npm package (@mrmx/chiqui) — lib (types, config, content, navigation) + Svelte components
+packages/chiqui/    # The npm package (chiqui) — lib (types, config, content, navigation) + Svelte components
 sites/docs/         # Documentation site that dogfoods chiqui as a dependency
 ```
 
@@ -17,7 +17,7 @@ sites/docs/         # Documentation site that dogfoods chiqui as a dependency
 
 ```bash
 pnpm install                              # Install all workspace deps
-pnpm --filter '@mrmx/chiqui' build        # Build the chiqui package (svelte-package → dist/)
+pnpm --filter chiqui build        # Build the chiqui package (svelte-package → dist/)
 pnpm --filter docs dev                    # Dev server for docs site
 pnpm --filter docs build                  # Production build for docs site
 pnpm --filter docs test                   # Run vitest for docs site
@@ -30,7 +30,7 @@ pnpm test                                 # Run all tests across workspace
 
 ### packages/chiqui
 
-Exports via subpath exports (`@mrmx/chiqui`, `@mrmx/chiqui/config`, `@mrmx/chiqui/content`, `@mrmx/chiqui/components`, `@mrmx/chiqui/navigation`, `@mrmx/chiqui/vite`, `@mrmx/chiqui/svelte-config`).
+Exports via subpath exports (`chiqui`, `chiqui/config`, `chiqui/content`, `chiqui/components`, `chiqui/navigation`, `chiqui/vite`, `chiqui/svelte-config`).
 
 Key design decisions:
 - **`initConfig(rawConfig)`** — consumer provides their AppConfig, chiqui caches and exposes helpers (siteName, navItems, etc.)
@@ -46,7 +46,7 @@ Key design decisions:
 3. `src/lib/content.ts` — calls `createContent(import.meta.glob(...))` and re-exports
 4. `src/hooks.server.ts` — imports config (triggers init) + validates content
 5. Routes import from `$lib/config` and `$lib/content` (the site's thin wrappers)
-6. Layout uses `<Header />` and `<Footer />` from `@mrmx/chiqui/components`
+6. Layout uses `<Header />` and `<Footer />` from `chiqui/components`
 
 ### Content system
 

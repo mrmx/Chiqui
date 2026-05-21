@@ -1,4 +1,4 @@
-import { initConfig } from '@mrmx/chiqui/config';
+import { initConfig } from 'chiqui/config';
 import rawConfig from '$config';
 
 export const config = initConfig(rawConfig, { validate: true });
@@ -21,4 +21,4 @@ export {
 	isLink,
 	showSection,
 	cfg
-} from '@mrmx/chiqui/config';
+} from 'chiqui/config';

@@ -1,7 +1,7 @@
 # <img src="./sites/docs/static/img/logo.svg" alt="Chiqui logo" width="96" height="96" valign="middle" /> Chiqui
 
-[![npm version](https://img.shields.io/npm/v/@mrmx/chiqui.svg)](https://www.npmjs.com/package/@mrmx/chiqui)
-[![npm downloads](https://img.shields.io/npm/dm/@mrmx/chiqui.svg)](https://www.npmjs.com/package/@mrmx/chiqui)
+[![npm version](https://img.shields.io/npm/v/chiqui.svg)](https://www.npmjs.com/package/chiqui)
+[![npm downloads](https://img.shields.io/npm/dm/chiqui.svg)](https://www.npmjs.com/package/chiqui)
 [![CI](https://github.com/mrmx/Chiqui/actions/workflows/ci.yml/badge.svg)](https://github.com/mrmx/Chiqui/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
 [![SvelteKit](https://img.shields.io/badge/SvelteKit-2-ff3e00.svg?logo=svelte)](https://svelte.dev/docs/kit)
@@ -11,7 +11,7 @@ Chiqui is a lightweight, content-driven static site generator built on top of
 [SvelteKit](https://svelte.dev/docs/kit). It is designed for small product sites, documentation sites, and
 multilingual static websites where Markdown content is the source of truth.
 
-The project provides a reusable Svelte package (`@mrmx/chiqui`) plus a docs site that
+The project provides a reusable Svelte package (`chiqui`) plus a docs site that
 acts as the reference implementation.
 
 ## Features
@@ -76,13 +76,13 @@ pnpm test
 Install the package in your SvelteKit site:
 
 ```bash
-pnpm add @mrmx/chiqui
+pnpm add chiqui
 ```
 
 Create a root `config.ts`:
 
 ```ts
-import type { AppConfig } from '@mrmx/chiqui';
+import type { AppConfig } from 'chiqui';
 
 const config: AppConfig = {
 	site: {
@@ -119,17 +119,17 @@ Initialize and re-export config helpers from `src/lib/config.ts`:
 
 ```ts
 import rawConfig from '../../config';
-import { initConfig } from '@mrmx/chiqui/config';
+import { initConfig } from 'chiqui/config';
 
 initConfig(rawConfig, { validate: true });
 
-export * from '@mrmx/chiqui/config';
+export * from 'chiqui/config';
 ```
 
 Load content from `src/lib/content.ts`:
 
 ```ts
-import { createContent } from '@mrmx/chiqui/content';
+import { createContent } from 'chiqui/content';
 
 const modules = import.meta.glob('/content/**/*.md', { eager: true });
 
@@ -148,7 +148,7 @@ Use the provided components in your layout:
 
 ```svelte
 <script lang="ts">
-	import { Header, Footer } from '@mrmx/chiqui/components';
+	import { Header, Footer } from 'chiqui/components';
 	import { showFooter } from '$lib/config';
 	import { getTranslatedSlug } from '$lib/content';
 
@@ -199,14 +199,14 @@ content/en/index.md  -> /en
 
 Chiqui exposes focused entry points:
 
-- `@mrmx/chiqui`
-- `@mrmx/chiqui/config`
-- `@mrmx/chiqui/content`
-- `@mrmx/chiqui/components`
-- `@mrmx/chiqui/navigation`
-- `@mrmx/chiqui/vite`
-- `@mrmx/chiqui/svelte-config`
-- `@mrmx/chiqui/types`
+- `chiqui`
+- `chiqui/config`
+- `chiqui/content`
+- `chiqui/components`
+- `chiqui/navigation`
+- `chiqui/vite`
+- `chiqui/svelte-config`
+- `chiqui/types`
 
 ## Docs Site
 

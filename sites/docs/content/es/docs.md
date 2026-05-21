@@ -10,7 +10,7 @@ title: Documentación
 ```bash
 mkdir mi-sitio && cd mi-sitio
 pnpm init
-pnpm add @mrmx/chiqui
+pnpm add chiqui
 ```
 
 ### 2. Añadir tu configuración
@@ -18,7 +18,7 @@ pnpm add @mrmx/chiqui
 Crea `config.ts` en la raíz de tu proyecto:
 
 ```ts
-import type { AppConfig } from '@mrmx/chiqui';
+import type { AppConfig } from 'chiqui';
 
 const config: AppConfig = {
   site: { name: 'Mi Sitio' },

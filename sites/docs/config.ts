@@ -1,4 +1,4 @@
-import type { AppConfig } from '@mrmx/chiqui';
+import type { AppConfig } from 'chiqui';
 
 const extTarget = '_blank';
 

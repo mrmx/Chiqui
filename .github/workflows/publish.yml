@@ -26,8 +26,8 @@ jobs:
           registry-url: 'https://registry.npmjs.org/'
 
       - run: pnpm install --frozen-lockfile
-      - run: pnpm --filter '@mrmx/chiqui' check
-      - run: pnpm --filter '@mrmx/chiqui' build
+      - run: pnpm --filter chiqui check
+      - run: pnpm --filter chiqui build
 
       - name: Publish to npm
         working-directory: packages/chiqui
@@ -41,10 +41,10 @@ jobs:
           VERSION="${GITHUB_REF_NAME#v}"
           gh release create "$GITHUB_REF_NAME" \
             --title "$GITHUB_REF_NAME" \
-            --notes "## @mrmx/chiqui@${VERSION}
+            --notes "## chiqui@${VERSION}
 
-          **npm:** [\`@mrmx/chiqui@${VERSION}\`](https://www.npmjs.com/package/@mrmx/chiqui/v/${VERSION})
-          **Install:** \`npm install @mrmx/chiqui@${VERSION}\`" \
+          **npm:** [\`chiqui@${VERSION}\`](https://www.npmjs.com/package/chiqui/v/${VERSION})
+          **Install:** \`npm install chiqui@${VERSION}\`" \
             || echo "Release already exists"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
